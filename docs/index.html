@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senado 2026 — agregador de pesquisas por estado</title>
+<meta name="description" content="Quem leva as 54 vagas do Senado em 2026: agregação de pesquisas por estado, com dobradinhas e nota dos institutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Archivo+Narrow:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --ink:#1f2a44; --texto:#4b5468; --mudo:#8a91a3;
+  --linha:#dfe3ec; --sem:#efefec;
+  --seguro:#2f4a8a; --provavel:#7d93c9; --aberto:#d9e0f2;
+  --disputa:#d9822b; --ok:#2d7a4f;
+  --n:"Archivo Narrow",sans-serif; --a:"Archivo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--a);font-size:15px;line-height:1.45}
+a{color:inherit}
+main{max-width:1080px;margin:0 auto;padding:18px 14px 60px}
+
+header h1{font-size:34px;line-height:1;margin:0;font-weight:800;letter-spacing:-.02em}
+header h1 small{display:block;font-size:15px;font-weight:400;color:var(--texto);letter-spacing:0;margin-top:6px}
+.faixa{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0 6px;font-size:14px;color:var(--texto)}
+.faixa b{color:var(--ink);font-weight:800;font-size:22px;display:block;line-height:1;font-family:var(--n)}
+.aviso-demo{background:#fff4e3;border:1px solid #f1c48a;color:#7a4a0e;padding:10px 12px;border-radius:6px;margin:12px 0;font-size:14px}
+
+/* ---------- mapa em ladrilhos ---------- */
+.mapa{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:5px;margin:18px 0 8px;aspect-ratio:6/8.4}
+.uf{position:relative;border-radius:4px;background:var(--sem);color:var(--ink);padding:5px 6px;cursor:pointer;border:0;text-align:left;font-family:var(--n);display:flex;flex-direction:column;justify-content:space-between;min-width:0;transition:transform .12s}
+.uf:hover,.uf:focus-visible{transform:translateY(-2px);outline:2px solid var(--ink);outline-offset:1px}
+.uf .sg{font-weight:700;font-size:15px;line-height:1}
+.uf .nomes{font-size:11px;line-height:1.2;font-weight:500;overflow:hidden}
+.uf .nomes span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uf .n{position:absolute;top:5px;right:6px;font-size:10px;color:inherit;opacity:.75}
+.uf.seguro{background:var(--seguro);color:#fff}
+.uf.provavel{background:var(--provavel);color:#fff}
+.uf.aberto{background:var(--aberto)}
+.uf.disputa{background:var(--disputa);color:#fff}
+.uf.sem{color:var(--mudo)}
+.uf.sem .nomes{display:none}
+.legenda{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:13px;color:var(--texto);margin-bottom:6px}
+.legenda i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-2px;margin-right:6px}
+.metodo{font-size:13px;color:var(--texto);max-width:66ch;margin:14px 0}
+.metodo details{margin-top:6px}
+.metodo summary{cursor:pointer;font-weight:600;color:var(--ink)}
+
+/* ---------- painel do estado ---------- */
+.painel{position:fixed;inset:auto 0 0 0;max-height:88vh;background:#fff;border-top:1px solid var(--linha);box-shadow:0 -10px 40px rgba(31,42,68,.18);border-radius:14px 14px 0 0;transform:translateY(105%);transition:transform .22s ease;overflow:auto;z-index:9;padding:14px 16px 40px}
+.painel.aberto{transform:none}
+@media (min-width:900px){
+  .layout{display:grid;grid-template-columns:1fr 440px;gap:28px;align-items:start}
+  .painel{position:sticky;top:12px;inset:auto;max-height:calc(100vh - 24px);transform:none;box-shadow:none;border:1px solid var(--linha);border-radius:8px}
+  .painel:not(.aberto) .conteudo{display:none}
+  .painel:not(.aberto)::before{content:"Toque em um estado no mapa para ver a disputa.";color:var(--mudo)}
+}
+.painel h2{margin:0;font-size:24px;letter-spacing:-.01em}
+.painel h2 small{font-size:13px;font-weight:400;color:var(--texto);display:block;margin-top:2px}
+.fechar{float:right;border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:var(--mudo)}
+.cand{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:0 10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--linha)}
+.cand .nome{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cand .nome em{font-style:normal;color:var(--texto);font-weight:400;font-size:12px;margin-left:6px}
+.cand .prob{text-align:right;font-family:var(--n);font-weight:700;font-size:18px}
+.cand .prob small{display:block;font-size:10px;font-weight:500;color:var(--mudo)}
+.cand .faixa-bar{grid-column:1/-1;position:relative;height:10px;background:var(--sem);border-radius:3px;margin-top:22px}
+.cand .faixa-bar .int{position:absolute;top:0;bottom:0;background:var(--aberto);border-radius:3px}
+.cand .faixa-bar .pt{position:absolute;top:-2px;width:3px;height:14px;background:var(--ink);border-radius:1px}
+.cand .faixa-bar .txt{position:absolute;left:0;top:-17px;font-size:11px;color:var(--texto);font-family:var(--n)}
+.cand.eleito .prob{color:var(--seguro)}
+.cand.eleito .faixa-bar .pt{background:var(--seguro)}
+.dob{font-size:12px;color:var(--texto);margin:6px 0 0}
+.dob b{color:var(--ink)}
+.linha-corte{border-top:2px dashed var(--disputa);margin:2px 0;position:relative}
+.linha-corte span{position:absolute;right:0;top:-9px;background:#fff;padding:0 4px;font-size:10px;color:var(--disputa);font-family:var(--n);font-weight:700}
+.pesq{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.pesq th{text-align:left;font-weight:600;color:var(--texto);border-bottom:1px solid var(--linha);padding:4px 4px}
+.pesq td{padding:5px 4px;border-bottom:1px solid var(--linha);vertical-align:top}
+.pesq td.num{text-align:right;font-family:var(--n)}
+.nota{display:inline-block;min-width:18px;text-align:center;border-radius:3px;font-family:var(--n);font-weight:700;font-size:12px;padding:0 4px;color:#fff;background:var(--mudo)}
+.nota.A{background:var(--ok)} .nota.B{background:#5a9a6f} .nota.C{background:#b89a3a} .nota.D{background:#c46a2a} .nota.E{background:#a83a2a}
+.pend{background:#fff8ee;border-left:3px solid var(--disputa);padding:8px 10px;font-size:13px;margin-top:12px}
+.pend ul{margin:6px 0 0;padding-left:16px}
+.vazio{color:var(--mudo);margin:14px 0}
+h3{font-size:14px;margin:18px 0 4px;color:var(--texto);font-weight:600}
+@media (prefers-reduced-motion:reduce){.uf,.painel{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Senado 2026<small>54 vagas, 27 estados, duas cadeiras cada. Quem está levando, segundo as pesquisas.</small></h1>
+  <div class="faixa" id="faixa"></div>
+  <div class="aviso-demo" id="demo" hidden></div>
+</header>
+
+<div class="layout">
+  <section>
+    <div class="mapa" id="mapa" aria-label="Mapa em ladrilhos dos estados"></div>
+    <div class="legenda">
+      <span><i style="background:var(--seguro)"></i>duas vagas definidas</span>
+      <span><i style="background:var(--provavel)"></i>uma definida, outra provável</span>
+      <span><i style="background:var(--disputa)"></i>segunda vaga em disputa aberta</span>
+      <span><i style="background:var(--aberto)"></i>poucas pesquisas</span>
+      <span><i style="background:var(--sem)"></i>sem pesquisa registrada</span>
+    </div>
+    <div class="metodo" id="metodo"></div>
+  </section>
+
+  <aside class="painel" id="painel" aria-live="polite">
+    <div class="conteudo" id="conteudo"></div>
+  </aside>
+</div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const fmtP=p=>Math.round(p*100)+"%";
+const fmtD=iso=>{if(!iso)return"—";const[a,m,d]=iso.split("-");return`${d}/${m}/${a.slice(2)}`};
+let DADOS=null;
+
+fetch("data/agregado.json?_="+Date.now()).then(r=>r.json()).then(d=>{DADOS=d;desenha(d)}).catch(()=>{
+  $("#faixa").innerHTML='<span>Ainda não há dados publicados. A primeira varredura gera <code>data/agregado.json</code>.</span>';
+});
+
+function classeUF(e){
+  if(!e.n_pesquisas)return"sem";
+  const c=e.candidatos;
+  if(c.length<3||e.n_pesquisas<2)return"aberto";
+  const p1=c[0].p_eleito,p2=c[1].p_eleito,p3=c[2]?.p_eleito??0;
+  if(p2>=.85)return"seguro";
+  if(p1>=.85&&p2>=.6)return"provavel";
+  if(p3>=.3)return"disputa";
+  return"aberto";
+}
+
+function desenha(d){
+  if(d.demo){$("#demo").hidden=false;$("#demo").textContent="Dados de demonstração gerados para validar a interface. Nomes e números aqui não são reais.";}
+  const est=Object.entries(d.estados);
+  const comDado=est.filter(([,e])=>e.n_pesquisas).length;
+  const seguras=est.reduce((s,[,e])=>s+e.candidatos.filter(c=>c.p_eleito>=.85).length,0);
+  $("#faixa").innerHTML=`
+    <span><b>${seguras}</b>vagas praticamente definidas</span>
+    <span><b>${54-seguras}</b>vagas em aberto</span>
+    <span><b>${comDado}/27</b>estados com pesquisa</span>
+    <span><b>${d.total_pesquisas}</b>pesquisas na base</span>
+    <span><b>${d.total_pendentes}</b>registradas no TSE sem números</span>
+    <span style="align-self:end">atualizado ${fmtD(d.atualizado)}${d.novas_hoje?` · ${d.novas_hoje} nova(s) hoje`:""}</span>`;
+
+  const mapa=$("#mapa");mapa.innerHTML="";
+  for(const[uf,e]of est){
+    const b=document.createElement("button");
+    b.className="uf "+classeUF(e);
+    b.style.gridRow=e.grid[0]+1;b.style.gridColumn=e.grid[1]+1;
+    b.setAttribute("aria-label",`${e.nome}, ${e.n_pesquisas} pesquisas`);
+    const nomes=e.candidatos.slice(0,2).map(c=>`<span>${sobrenome(c.nome)}</span>`).join("");
+    b.innerHTML=`<div class="sg">${uf}</div><div class="nomes">${nomes}</div>${e.n_pesquisas?`<span class="n">${e.n_pesquisas}</span>`:""}`;
+    b.onclick=()=>abre(uf);
+    mapa.appendChild(b);
+  }
+  const p=d.parametros;
+  $("#metodo").innerHTML=`Média ponderada das pesquisas estimuladas registradas no TSE, por estado. Peso cai pela metade a cada ${p.meia_vida_dias} dias; amostra e nota do instituto (erro nas eleições de 2018 e 2022) entram no peso; a mesma casa não domina o estado. Dobradinhas: quem vota no líder dá ${Math.round(p.tau_default*100)}% do 2º voto ao parceiro, e isso vale também para redistribuir indecisos. A probabilidade de eleição sai de 20 mil cenários simulados com erro comum de estado, e é puxada para "não sei" quando há menos de ${p.pesquisas_para_confianca_plena} pesquisas ou a última já envelheceu.
+  <details><summary>O que este site não faz</summary>Não inventa número onde não há pesquisa. Estado cinza é estado sem pesquisa registrada para o Senado. Pesquisa registrada no TSE cuja tabela ainda não foi capturada aparece como pendência, não some. Uma pesquisa só produz um intervalo largo por construção.</details>`;
+}
+
+function sobrenome(n){const p=n.trim().split(/\s+/);return p.length>1?p[p.length-1]:n}
+
+function abre(uf){
+  const e=DADOS.estados[uf],R=DADOS.ratings||{};
+  const painel=$("#painel");painel.classList.add("aberto");
+  const dobDe={};for(const d of e.dobradinhas){dobDe[d.a]=[d.b,d.tau];dobDe[d.b]=[d.a,d.tau]}
+  const maxV=Math.max(60,...e.candidatos.map(c=>c.media+c.sigma*1.5));
+  let cands="";
+  e.candidatos.forEach((c,i)=>{
+    const lo=Math.max(0,c.media-1.28*c.sigma),hi=Math.min(200,c.media+1.28*c.sigma);
+    const dob=dobDe[c.nome]?`<div class="dob">dobradinha com <b>${dobDe[c.nome][0]}</b> (transferência ${Math.round(dobDe[c.nome][1]*100)}%)</div>`:"";
+    cands+=`<div class="cand ${c.p_eleito>=.5?"eleito":""}">
+      <div class="nome">${c.nome}<em>${c.n} pesq.</em></div>
+      <div class="prob">${fmtP(c.p_eleito)}<small>eleito</small></div>
+      <div class="faixa-bar"><div class="int" style="left:${lo/maxV*100}%;width:${(hi-lo)/maxV*100}%"></div><div class="pt" style="left:${c.media/maxV*100}%"></div><div class="txt">${c.media.toFixed(1)}% <span style="color:var(--mudo)">(${lo.toFixed(0)}–${hi.toFixed(0)})</span></div></div>
+      ${dob}</div>`;
+    if(i===1&&e.candidatos.length>2)cands+=`<div class="linha-corte"><span>linha de corte — 2 vagas</span></div>`;
+  });
+  const pesq=e.pesquisas.map(p=>{const r=R[p.instituto];return`<tr>
+    <td>${p.instituto}<br><span style="color:var(--mudo);font-size:11px">${p.registro_tse||"sem nº TSE"} · ${p.tipo==="1voto"?"1 voto":"2 votos"}</span></td>
+    <td class="num">${fmtD(p.data_fim)}</td><td class="num">${p.amostra||"—"}</td>
+    <td class="num"><span class="nota ${r?r.nota:""}" title="${r?`erro médio ${r.mae} pp em ${r.disputas} disputas`:"sem histórico avaliado"}">${r?r.nota:"?"}</span></td>
+    <td class="num">${p.peso.toFixed(2)}</td></tr>`}).join("");
+  const pend=e.pendentes.length?`<div class="pend"><b>${e.pendentes.length} pesquisa(s) registrada(s) no TSE sem números capturados</b><ul>${e.pendentes.map(p=>`<li>${p.instituto_bruto} · ${p.registro_tse} · campo até ${fmtD(p.data_fim)} · n=${p.amostra}</li>`).join("")}</ul></div>`:"";
+  $("#conteudo").innerHTML=`<button class="fechar" aria-label="Fechar" onclick="fecha()">×</button>
+    <h2>${e.nome}<small>${e.n_pesquisas} pesquisa(s) · última em ${fmtD(e.ultima_pesquisa)}${e.dias_sem_pesquisa!=null?` · ${e.dias_sem_pesquisa} dias atrás`:""}</small></h2>
+    ${e.aviso?`<p class="dob" style="color:var(--disputa)">${e.aviso}</p>`:""}
+    ${e.n_pesquisas?`<h3>Menções projetadas (% dos eleitores) e chance de levar uma das duas vagas</h3>${cands}`:`<p class="vazio">Nenhuma pesquisa estimulada para o Senado capturada neste estado.</p>`}
+    ${pend}
+    ${e.pesquisas.length?`<h3>Pesquisas consideradas</h3><table class="pesq"><tr><th>Instituto</th><th>Campo</th><th>n</th><th>Nota</th><th>Peso</th></tr>${pesq}</table>`:""}
+    <p class="dob" style="margin-top:14px">Nota do instituto: A ≤3 pp de erro médio · B ≤4,5 · C ≤6 · D ≤8 · E acima. "?" = sem histórico, entra com peso reduzido.</p>`;
+  if(window.innerWidth<900)painel.scrollTop=0;
+}
+function fecha(){$("#painel").classList.remove("aberto")}
+</script>
+</body>
+</html>

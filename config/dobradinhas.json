@@ -1,0 +1,5 @@
+{
+  "_doc": "Pares de candidatos ao Senado em dobradinha. tau = fração do 2º voto de quem vota em A que vai para B (simétrico). Sem tau, usa _default_tau. Nomes devem bater com os nomes canônicos em data/pesquisas.csv. Preencher/validar manualmente — é fato político, não sai das pesquisas.",
+  "_default_tau": 0.65,
+  "pares": []
+}

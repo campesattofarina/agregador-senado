@@ -1,0 +1,23 @@
+{
+  "_doc": "Normalização de nomes de institutos (como aparecem nas fontes -> nome canônico). Chaves em minúsculas, sem acento.",
+  "alias": {
+    "datafolha": "Datafolha",
+    "quaest": "Quaest", "genial/quaest": "Quaest", "genial quaest": "Quaest",
+    "atlas": "AtlasIntel", "atlasintel": "AtlasIntel", "atlas/intel": "AtlasIntel", "atlas intel": "AtlasIntel", "atlas/bloomberg": "AtlasIntel",
+    "parana pesquisas": "Paraná Pesquisas", "parana": "Paraná Pesquisas",
+    "ipec": "Ipec", "ibope": "Ipec",
+    "ipespe": "Ipespe", "ipespe/abrapel": "Ipespe",
+    "real time big data": "Real Time Big Data", "rtbd": "Real Time Big Data",
+    "futura": "Futura", "futura/apex": "Futura", "apex/futura": "Futura",
+    "meio/ideia": "Ideia", "ideia": "Ideia", "ideia big data": "Ideia",
+    "fsb": "FSB", "fsb/btg": "FSB", "btg/fsb": "FSB",
+    "datapoder": "PoderData", "poderdata": "PoderData", "poder data": "PoderData",
+    "verita": "Veritá",
+    "nexus": "Nexus", "btg/nexus": "Nexus",
+    "amostragem": "Amostragem",
+    "methodus": "Methodus",
+    "gerp": "Gerp",
+    "vox populi": "Vox Populi",
+    "mda": "MDA", "cnt/mda": "MDA"
+  }
+}
