@@ -1,5 +1,5 @@
 {
-  "atualizado": "2026-09-30",
+  "atualizado": "2026-10-01",
   "total": 18,
   "itens": [
     {
@@ -9,7 +9,7 @@
       "registro_tse": "AM084472026",
       "data_fim": "2026-09-09",
       "amostra": 0,
-      "dias": 21
+      "dias": 22
     },
     {
       "uf": "AM",
@@ -18,7 +18,7 @@
       "registro_tse": "AM034972026",
       "data_fim": "2026-05-07",
       "amostra": 0,
-      "dias": 146
+      "dias": 147
     },
     {
       "uf": "AM",
@@ -27,7 +27,7 @@
       "registro_tse": "AM051012026",
       "data_fim": "2026-05-06",
       "amostra": 0,
-      "dias": 147
+      "dias": 148
     },
     {
       "uf": "AM",
@@ -36,7 +36,7 @@
       "registro_tse": "AM039562026",
       "data_fim": "2026-04-10",
       "amostra": 0,
-      "dias": 173
+      "dias": 174
     },
     {
       "uf": "AM",
@@ -45,7 +45,7 @@
       "registro_tse": "AM011182026",
       "data_fim": "2026-04-09",
       "amostra": 0,
-      "dias": 174
+      "dias": 175
     },
     {
       "uf": "AM",
@@ -54,7 +54,7 @@
       "registro_tse": "AM068232026",
       "data_fim": "2026-04-06",
       "amostra": 0,
-      "dias": 177
+      "dias": 178
     },
     {
       "uf": "AM",
@@ -63,7 +63,7 @@
       "registro_tse": "AM095522026",
       "data_fim": "2026-03-10",
       "amostra": 0,
-      "dias": 204
+      "dias": 205
     },
     {
       "uf": "AM",
@@ -72,7 +72,7 @@
       "registro_tse": "AM095432026",
       "data_fim": "2026-03-10",
       "amostra": 0,
-      "dias": 204
+      "dias": 205
     },
     {
       "uf": "AM",
@@ -81,7 +81,7 @@
       "registro_tse": "AM048052026",
       "data_fim": "2026-03-10",
       "amostra": 0,
-      "dias": 204
+      "dias": 205
     },
     {
       "uf": "AM",
@@ -90,7 +90,7 @@
       "registro_tse": "AM049392026",
       "data_fim": "2026-03-09",
       "amostra": 0,
-      "dias": 205
+      "dias": 206
     },
     {
       "uf": "AM",
@@ -99,7 +99,7 @@
       "registro_tse": "AM052752026",
       "data_fim": "2026-03-03",
       "amostra": 0,
-      "dias": 211
+      "dias": 212
     },
     {
       "uf": "AM",
@@ -108,7 +108,7 @@
       "registro_tse": "AM090422026",
       "data_fim": "2026-02-10",
       "amostra": 0,
-      "dias": 232
+      "dias": 233
     },
     {
       "uf": "AM",
@@ -117,7 +117,7 @@
       "registro_tse": "AM090442026",
       "data_fim": "2026-02-10",
       "amostra": 0,
-      "dias": 232
+      "dias": 233
     },
     {
       "uf": "AM",
@@ -126,7 +126,7 @@
       "registro_tse": "AM020872026",
       "data_fim": "2026-02-10",
       "amostra": 0,
-      "dias": 232
+      "dias": 233
     },
     {
       "uf": "AM",
@@ -135,7 +135,7 @@
       "registro_tse": "AM072972026",
       "data_fim": "2026-01-10",
       "amostra": 0,
-      "dias": 263
+      "dias": 264
     },
     {
       "uf": "AM",
@@ -144,7 +144,7 @@
       "registro_tse": "AM061722026",
       "data_fim": "2026-01-10",
       "amostra": 0,
-      "dias": 263
+      "dias": 264
     },
     {
       "uf": "AM",
@@ -153,7 +153,7 @@
       "registro_tse": "AM091182026",
       "data_fim": "2026-01-10",
       "amostra": 0,
-      "dias": 263
+      "dias": 264
     },
     {
       "uf": "AM",
@@ -162,7 +162,7 @@
       "registro_tse": "AM008862026",
       "data_fim": "2026-01-08",
       "amostra": 0,
-      "dias": 265
+      "dias": 266
     }
   ]
 }
