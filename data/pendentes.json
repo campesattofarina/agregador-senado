@@ -166,9 +166,9 @@
     },
     {
       "uf": "AM",
-      "instituto": "22345021000181",
-      "instituto_bruto": "22345021000181",
-      "registro_tse": "AM072972026",
+      "instituto": "04942645000102",
+      "instituto_bruto": "04942645000102",
+      "registro_tse": "AM061722026",
       "data_fim": "2026-01-10",
       "amostra": 0,
       "dias": 273
@@ -184,9 +184,9 @@
     },
     {
       "uf": "AM",
-      "instituto": "04942645000102",
-      "instituto_bruto": "04942645000102",
-      "registro_tse": "AM061722026",
+      "instituto": "22345021000181",
+      "instituto_bruto": "22345021000181",
+      "registro_tse": "AM072972026",
       "data_fim": "2026-01-10",
       "amostra": 0,
       "dias": 273
