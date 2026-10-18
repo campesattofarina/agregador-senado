@@ -94,18 +94,18 @@
     },
     {
       "uf": "AM",
-      "instituto": "22445600000104",
-      "instituto_bruto": "22445600000104",
-      "registro_tse": "AM048052026",
+      "instituto": "11642489000111",
+      "instituto_bruto": "11642489000111",
+      "registro_tse": "AM095432026",
       "data_fim": "2026-03-10",
       "amostra": 0,
       "dias": 222
     },
     {
       "uf": "AM",
-      "instituto": "11642489000111",
-      "instituto_bruto": "11642489000111",
-      "registro_tse": "AM095432026",
+      "instituto": "22445600000104",
+      "instituto_bruto": "22445600000104",
+      "registro_tse": "AM048052026",
       "data_fim": "2026-03-10",
       "amostra": 0,
       "dias": 222
@@ -139,6 +139,15 @@
     },
     {
       "uf": "AM",
+      "instituto": "19259002000128",
+      "instituto_bruto": "19259002000128",
+      "registro_tse": "AM020872026",
+      "data_fim": "2026-02-10",
+      "amostra": 0,
+      "dias": 250
+    },
+    {
+      "uf": "AM",
       "instituto": "22267969000166",
       "instituto_bruto": "22267969000166",
       "registro_tse": "AM090442026",
@@ -157,24 +166,6 @@
     },
     {
       "uf": "AM",
-      "instituto": "19259002000128",
-      "instituto_bruto": "19259002000128",
-      "registro_tse": "AM020872026",
-      "data_fim": "2026-02-10",
-      "amostra": 0,
-      "dias": 250
-    },
-    {
-      "uf": "AM",
-      "instituto": "00654576000172",
-      "instituto_bruto": "00654576000172",
-      "registro_tse": "AM091182026",
-      "data_fim": "2026-01-10",
-      "amostra": 0,
-      "dias": 281
-    },
-    {
-      "uf": "AM",
       "instituto": "04942645000102",
       "instituto_bruto": "04942645000102",
       "registro_tse": "AM061722026",
@@ -187,6 +178,15 @@
       "instituto": "22345021000181",
       "instituto_bruto": "22345021000181",
       "registro_tse": "AM072972026",
+      "data_fim": "2026-01-10",
+      "amostra": 0,
+      "dias": 281
+    },
+    {
+      "uf": "AM",
+      "instituto": "00654576000172",
+      "instituto_bruto": "00654576000172",
+      "registro_tse": "AM091182026",
       "data_fim": "2026-01-10",
       "amostra": 0,
       "dias": 281
