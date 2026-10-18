@@ -1,5 +1,5 @@
 {
-  "atualizado": "2026-10-17",
+  "atualizado": "2026-10-18",
   "total": 22,
   "itens": [
     {
@@ -9,7 +9,7 @@
       "registro_tse": "AM051032026",
       "data_fim": "2026-10-09",
       "amostra": 0,
-      "dias": 8
+      "dias": 9
     },
     {
       "uf": "AM",
@@ -18,7 +18,7 @@
       "registro_tse": "AM001632026",
       "data_fim": "2026-10-07",
       "amostra": 0,
-      "dias": 10
+      "dias": 11
     },
     {
       "uf": "AM",
@@ -27,7 +27,7 @@
       "registro_tse": "AM033562026",
       "data_fim": "2026-10-06",
       "amostra": 0,
-      "dias": 11
+      "dias": 12
     },
     {
       "uf": "AM",
@@ -36,7 +36,7 @@
       "registro_tse": "AM028682026",
       "data_fim": "2026-10-05",
       "amostra": 0,
-      "dias": 12
+      "dias": 13
     },
     {
       "uf": "AM",
@@ -45,7 +45,7 @@
       "registro_tse": "AM084472026",
       "data_fim": "2026-09-09",
       "amostra": 0,
-      "dias": 38
+      "dias": 39
     },
     {
       "uf": "AM",
@@ -54,7 +54,7 @@
       "registro_tse": "AM034972026",
       "data_fim": "2026-05-07",
       "amostra": 0,
-      "dias": 163
+      "dias": 164
     },
     {
       "uf": "AM",
@@ -63,7 +63,7 @@
       "registro_tse": "AM051012026",
       "data_fim": "2026-05-06",
       "amostra": 0,
-      "dias": 164
+      "dias": 165
     },
     {
       "uf": "AM",
@@ -72,7 +72,7 @@
       "registro_tse": "AM039562026",
       "data_fim": "2026-04-10",
       "amostra": 0,
-      "dias": 190
+      "dias": 191
     },
     {
       "uf": "AM",
@@ -81,7 +81,7 @@
       "registro_tse": "AM011182026",
       "data_fim": "2026-04-09",
       "amostra": 0,
-      "dias": 191
+      "dias": 192
     },
     {
       "uf": "AM",
@@ -90,7 +90,7 @@
       "registro_tse": "AM068232026",
       "data_fim": "2026-04-06",
       "amostra": 0,
-      "dias": 194
+      "dias": 195
     },
     {
       "uf": "AM",
@@ -99,7 +99,7 @@
       "registro_tse": "AM048052026",
       "data_fim": "2026-03-10",
       "amostra": 0,
-      "dias": 221
+      "dias": 222
     },
     {
       "uf": "AM",
@@ -108,7 +108,7 @@
       "registro_tse": "AM095432026",
       "data_fim": "2026-03-10",
       "amostra": 0,
-      "dias": 221
+      "dias": 222
     },
     {
       "uf": "AM",
@@ -117,7 +117,7 @@
       "registro_tse": "AM095522026",
       "data_fim": "2026-03-10",
       "amostra": 0,
-      "dias": 221
+      "dias": 222
     },
     {
       "uf": "AM",
@@ -126,7 +126,7 @@
       "registro_tse": "AM049392026",
       "data_fim": "2026-03-09",
       "amostra": 0,
-      "dias": 222
+      "dias": 223
     },
     {
       "uf": "AM",
@@ -135,7 +135,7 @@
       "registro_tse": "AM052752026",
       "data_fim": "2026-03-03",
       "amostra": 0,
-      "dias": 228
+      "dias": 229
     },
     {
       "uf": "AM",
@@ -144,7 +144,7 @@
       "registro_tse": "AM090442026",
       "data_fim": "2026-02-10",
       "amostra": 0,
-      "dias": 249
+      "dias": 250
     },
     {
       "uf": "AM",
@@ -153,7 +153,7 @@
       "registro_tse": "AM090422026",
       "data_fim": "2026-02-10",
       "amostra": 0,
-      "dias": 249
+      "dias": 250
     },
     {
       "uf": "AM",
@@ -162,7 +162,7 @@
       "registro_tse": "AM020872026",
       "data_fim": "2026-02-10",
       "amostra": 0,
-      "dias": 249
+      "dias": 250
     },
     {
       "uf": "AM",
@@ -171,7 +171,7 @@
       "registro_tse": "AM091182026",
       "data_fim": "2026-01-10",
       "amostra": 0,
-      "dias": 280
+      "dias": 281
     },
     {
       "uf": "AM",
@@ -180,7 +180,7 @@
       "registro_tse": "AM061722026",
       "data_fim": "2026-01-10",
       "amostra": 0,
-      "dias": 280
+      "dias": 281
     },
     {
       "uf": "AM",
@@ -189,7 +189,7 @@
       "registro_tse": "AM072972026",
       "data_fim": "2026-01-10",
       "amostra": 0,
-      "dias": 280
+      "dias": 281
     },
     {
       "uf": "AM",
@@ -198,7 +198,7 @@
       "registro_tse": "AM008862026",
       "data_fim": "2026-01-08",
       "amostra": 0,
-      "dias": 282
+      "dias": 283
     }
   ]
 }
